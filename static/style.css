@@ -1,0 +1,90 @@
+/* Portrait */
+@media screen and (orientation: portrait) {
+    p { font-family: Arial, Helvetica; text-align: center; color: #434343; margin: 0.2em}
+    .appendix.title { font-size: 4vw; font-weight: bold; margin: 1em 0.2em auto}
+    .appendix.sentence { font-size: 3vw; margin: 0.8em}
+    .emphasis.red { font-size: 7vw; color: red; font-weight: bold}
+    .emphasis { font-size: 7vw; font-weight: bold}
+    .stats { font-size: 3vw}
+    .days { font-size: 7vw; margin: 0px}
+    .digits { font-size: 12vw; font-weight: bold; margin: 0px; line-height: 90%}
+    .sentence { font-size: 4vw; margin-bottom: 0.5em}
+    .state { font-size: 7vw; font-weight: bold}
+    img { width: 30%; height: 30%}
+    div.card { flex-basis: 100%; margin: 0px}
+}
+
+/* Landscape */
+@media screen and (orientation: landscape) {
+    p { font-family: Arial, Helvetica; text-align: center; color: #434343; margin: 0.2em}
+    .appendix.title { font-size: 2vw; font-weight: bold; margin: 1em 0.2em auto}
+    .appendix.sentence { font-size: 1.5vw; margin: 0.8em}
+    .emphasis.red { font-size: 3vw; color: red; font-weight: bold}
+    .emphasis { font-size: 3vw; font-weight: bold}
+    .stats { font-size: 1.5vw}
+    .days { font-size: 3.5vw; margin: 0px}
+    .digits { font-size: 7vw; font-weight: bold; margin: 0px; line-height: 90%}
+    .sentence { font-size: 2vw; margin-bottom: 0.5em}
+    .state { font-size: 3.5vw; font-weight: bold}
+    img { width: 40%; height: 40%}
+    div.card { flex-basis: 40%; margin: 0px}
+}
+
+/* Common items */
+hr.dotted { border-top: 3px dotted #434343; margin-top: 5em}
+div.cards { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin: 0px}
+div.visual_info { display: flex; justify-content: center; align-items: center; margin: 0px}
+span.up:after { content: "\25B2"; color: red }
+span.down:after { content: "\25BC"; color: green}
+span.same:after { content: ""; color: gray}
+
+/* Flat design drop down menu */
+.state_select {
+    font-family: Arial, Helvetica;
+    overflow: hidden;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+.state_select select {
+    width: 100%;
+    padding-right: 1em;
+    cursor: pointer;
+    text-indent: 0.01px;
+    text-overflow: ellipsis;
+    border: none;
+    outline: none;
+    background: transparent;
+    background-image: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+.state_select select::-ms-expand {
+    display: none;
+}
+.state_select.simple {
+    position: relative;
+    border: 1px solid #434343;
+    border-radius: 2px;
+    background: #ffffff;
+}
+.state_select.simple::before {
+    position: absolute;
+    top: 0.8em;
+    right: 0.9em;
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #434343;
+    pointer-events: none;
+}
+.state_select.simple select {
+    font-family: Arial, Helvetica;
+    font-size: 2vw;
+    color: #434343;
+    padding: 8px 8px 8px 24px;
+}
