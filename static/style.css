@@ -34,9 +34,9 @@
 hr.dotted { border-top: 3px dotted #434343; margin-top: 5em}
 div.cards { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin: 0px}
 div.visual_info { display: flex; justify-content: center; align-items: center; margin: 0px}
-span.up:after { content: "\25B2"; color: red }
-span.down:after { content: "\25BC"; color: green}
-span.same:after { content: ""; color: gray}
+span.up:after { content: " (Speeding up)"; color: red }
+span.down:after { content: " (Slowing down)"; color: green}
+span.same:after { content: " (Constant rate)"; color: gray}
 
 /* Flat design drop down menu */
 .state_select {

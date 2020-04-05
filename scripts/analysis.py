@@ -6,20 +6,21 @@ import time
 import os
 import json
 
+DATA_RANGE = 7
 
 # Extract data for the last 7 days.
 # If offset is given, 7 days data up to [today - offset] day.
 def ExtractAWeek(state, database, offset = 0):
     if offset == 0:
-        return database.loc[database.state == state].iloc[-7:]
+        return database.loc[database.state == state].iloc[-DATA_RANGE:]
     else:
-        return database.loc[database.state == state].iloc[-7-offset:-offset]
+        return database.loc[database.state == state].iloc[-DATA_RANGE-offset:-offset]
 
 # Estimate daily increase ratio.
 # This function applys lnear regression in logarithmic space.
 def EstimateRate(state, dates, numbers):
     # Apply linear regression in log space.
-    X = np.arange(7).reshape(-1, 1)
+    X = np.arange(DATA_RANGE).reshape(-1, 1)
     Y = numbers.values.reshape(-1, 1)
     linear_regressor = linear_model.LinearRegression()
     linear_regressor.fit(X, np.log(Y))
