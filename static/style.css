@@ -5,6 +5,7 @@
     .appendix.sentence { font-size: 3vw; margin: 0.8em}
     .emphasis.red { font-size: 7vw; color: red; font-weight: bold}
     .emphasis { font-size: 7vw; font-weight: bold}
+    .category { font-size: 3vw}
     .stats { font-size: 3vw}
     .days { font-size: 7vw; margin: 0px}
     .digits { font-size: 12vw; font-weight: bold; margin: 0px; line-height: 90%}
@@ -32,59 +33,11 @@
 
 /* Common items */
 hr.dotted { border-top: 3px dotted #434343; margin-top: 5em}
+div.menu{ display: flex; flex-wrap: wrap; justify-content: space-evenly; align-items: center; margin: 0px}
 div.cards { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin: 0px}
 div.visual_info { display: flex; justify-content: center; align-items: center; margin: 0px}
+span.stats_digits { font-weight: bold}
 span.up:after { content: " (Speeding up)"; color: red }
 span.down:after { content: " (Slowing down)"; color: green}
 span.same:after { content: " (Constant rate)"; color: gray}
 
-/* Flat design drop down menu */
-.name_select {
-    font-family: Arial, Helvetica;
-    overflow: hidden;
-    width: 60%;
-    margin: auto;
-    text-align: center;
-}
-.name_select select {
-    width: 100%;
-    padding-right: 1em;
-    cursor: pointer;
-    text-indent: 0.01px;
-    text-overflow: ellipsis;
-    border: none;
-    outline: none;
-    background: transparent;
-    background-image: none;
-    box-shadow: none;
-    -webkit-appearance: none;
-    appearance: none;
-}
-.name_select select::-ms-expand {
-    display: none;
-}
-.name_select.simple {
-    position: relative;
-    border: 1px solid #434343;
-    border-radius: 2px;
-    background: #ffffff;
-}
-.name_select.simple::before {
-    position: absolute;
-    top: 0.8em;
-    right: 0.9em;
-    width: 0;
-    height: 0;
-    padding: 0;
-    content: '';
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid #434343;
-    pointer-events: none;
-}
-.name_select.simple select {
-    font-family: Arial, Helvetica;
-    font-size: 2vw;
-    color: #434343;
-    padding: 8px 8px 8px 24px;
-}
