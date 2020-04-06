@@ -6,70 +6,20 @@
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
         <script>
             function reload(){
-                var state = document.getElementById('state').value;
-                window.location = "?state=" + state;
+                var name = document.getElementById('name').value;
+                window.location = "?name=" + name;
             }
         </script>
     </head>
     <body>
-        <div class='state_select simple'>
-            <select id='state' onchange="reload()">
-                <option value="">Select a state...</option>
-                <option value="Alabama">Alabama</option>
-                <option value="Alaska">Alaska</option>
-                <option value="Arizona">Arizona</option>
-                <option value="Arkansas">Arkansas</option>
-                <option value="California">California</option>
-                <option value="Colorado">Colorado</option>
-                <option value="Connecticut">Connecticut</option>
-                <option value="Delaware">Delaware</option>
-                <option value="District of Columbia">District of Columbia</option>
-                <option value="Florida">Florida</option>
-                <option value="Georgia">Georgia</option>
-                <option value="Hawaii">Hawaii</option>
-                <option value="Idaho">Idaho</option>
-                <option value="Illinois">Illinois</option>
-                <option value="Indiana">Indiana</option>
-                <option value="Iowa">Iowa</option>
-                <option value="Kansas">Kansas</option>
-                <option value="Kentucky">Kentucky</option>
-                <option value="Louisiana">Louisiana</option>
-                <option value="Maine">Maine</option>
-                <option value="Maryland">Maryland</option>
-                <option value="Massachusetts">Massachusetts</option>
-                <option value="Michigan">Michigan</option>
-                <option value="Minnesota">Minnesota</option>
-                <option value="Mississippi">Mississippi</option>
-                <option value="Missouri">Missouri</option>
-                <option value="Montana">Montana</option>
-                <option value="Nebraska">Nebraska</option>
-                <option value="Nevada">Nevada</option>
-                <option value="New Hampshire">New Hampshire</option>
-                <option value="New Jersey">New Jersey</option>
-                <option value="New Mexico">New Mexico</option>
-                <option value="New York">New York</option>
-                <option value="North Carolina">North Carolina</option>
-                <option value="North Dakota">North Dakota</option>
-                <option value="Ohio">Ohio</option>
-                <option value="Oklahoma">Oklahoma</option>
-                <option value="Oregon">Oregon</option>
-                <option value="Pennsylvania">Pennsylvania</option>
-                <option value="Rhode Island">Rhode Island</option>
-                <option value="South Carolina">South Carolina</option>
-                <option value="South Dakota">South Dakota</option>
-                <option value="Tennessee">Tennessee</option>
-                <option value="Texas">Texas</option>
-                <option value="Utah">Utah</option>
-                <option value="Vermont">Vermont</option>
-                <option value="Virginia">Virginia</option>
-                <option value="Washington">Washington</option>
-                <option value="West Virginia">West Virginia</option>
-                <option value="Wisconsin">Wisconsin</option>
-                <option value="Wyoming">Wyoming</option>
+        <div class='name_select simple'>
+            <select id='name' onchange="reload()">
+                <option value="">Select an area name...</option>
+                {{ menu_items | safe }}
             </select>
         </div>
 
-        <p class='state'>{{ state }}</p>
+        <p class='name'>{{ name }}</p>
 
         <p class='stats'>{{ date }}, Total: {{ current_total }}, Growth rate: <span class='{{ change }}'>{{ rate }}% per day</span></p>
 
@@ -135,9 +85,7 @@
 
         <div>
             <p class='appendix title'>Data source</p>
-            <p class='appendix sentence'>Cumulative number of cases: <a href='https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html'>The New York Times</a></p>
-            <p class='appendix sentence'>Population (2019): <a href='https://www2.census.gov/programs-surveys/popest/datasets/2010-2019/state/detail'>United States Census</a></p>
-            <p class='appendix sentence'>Number of hospital beds (2018): <a href='https://www.kff.org/other/state-indicator/beds-by-ownership'>Kaiser Family Foundation</a></p>
+            {{ data_source | safe }}
             <p class='appendix title'>How it's calculated</p>
             <p class='appendix sentence'>Precise estimation is not my goal,<br>I want to change the predicted future instead.</p>
             <p class='appendix sentence'>Simple extrapolation is used for the estimations.</p>
@@ -145,7 +93,7 @@
             <p class='appendix sentence'>2) Calculate the growth ratio by applying a linear regression in log space.</p>
             <p class='appendix sentence'>3) Extrapolate the numbers using the rate.</p>
             <p class='appendix sentence'>Recovery population is not taken into account.</p>
-            <p class='appendix sentence'>The number of hospital beds is from 2018, NOT a live update.</p>
+            <p class='appendix sentence'>The number of hospital beds is NOT a live update.</p>
         </div>
     </body>
 </html>
