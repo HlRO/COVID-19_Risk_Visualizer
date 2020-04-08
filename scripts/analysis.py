@@ -55,16 +55,21 @@ def Analyse(name, covid_path, population_path, beds_path):
     rate_change = day_rate - day_rate_yesterday
 
     # Get populaiton data.
+    print(populations)
+    print(name)
     population = populations.loc[populations.name == name,'population'].values[0]
 
     # Get the number of hospital beds.
     beds_per_1000 = beds.loc[beds.name == name,'beds_per_1000'].values[0]
     beds = beds_per_1000 * population / 1000
 
-    # Estimate days of milestones.
+    print(name)
     print(population)
+    print(beds)
     print(current)
-    print(np.log(day_rate))
+    print(day_rate)
+
+    # Estimate days of milestones.
     time_1_per_500 = max(0.0, np.log(population / 500 / current) / np.log(day_rate))
     time_1_per_3 = max(0.0, np.log(population / 3 / current) / np.log(day_rate))
     time_everyone = max(0.0, np.log(population / 1 / current) / np.log(day_rate))

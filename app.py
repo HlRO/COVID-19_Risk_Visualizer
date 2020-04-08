@@ -21,7 +21,7 @@ def common(name, data_path, data_source_html):
     # Create a list of countries.
     menu_items_html = ''
     for item in menu_items:
-        menu_items_html += '<option value="' + str(item)+ '">' + str(item)+ '</option>\n'
+        menu_items_html += '<option value="' + str(item)+ '">' + str(item)+ '</option>¥n'
 
     change_str = getRateChangeString(rate_change)
 
@@ -58,6 +58,21 @@ def usa():
     "
 
     return common(name, 'data/usa/', data_source_html);
+
+@app.route('/japan/')
+def japan():
+    name = request.args.get('name')
+    if not name:
+        name = 'Tokyo'
+
+    # Create a list of data sources.
+    data_source_html = "\
+        <p class='appendix sentence'>Number of cases:<br> <a href='https://github.com/kaz-ogiwara/covid19/'>TOYO KEIZAI ONLINE</a></p>\
+        <p class='appendix sentence'>Population:<br> <a href='https://www.stat.go.jp/data/nihon/02.html'>Statistics Bureau Japan</a></p>\
+        <p class='appendix sentence'>Number of hospital beds:<br> <a href='https://www.mhlw.go.jp/toukei/youran/indexyk_2_2.html'>Ministry of Health, Labour and Welfare Japan</a></p>\
+    "
+
+    return common(name, 'data/japan/', data_source_html);
 
 @app.route('/world/')
 def world():
