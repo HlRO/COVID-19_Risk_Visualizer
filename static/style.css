@@ -11,6 +11,7 @@
     .digits { font-size: 12vw; font-weight: bold; margin: 0px; line-height: 90%}
     .sentence { font-size: 4vw; margin-bottom: 0.5em}
     .name { font-size: 7vw; font-weight: bold}
+    span.note{ font-size: 3vw; color: #aaaaaa; margin: 0em}
     img { width: 30%; height: 30%}
     div.card { flex-basis: 100%; margin: 0px}
 }
@@ -27,8 +28,9 @@
     .digits { font-size: 7vw; font-weight: bold; margin: 0px; line-height: 90%}
     .sentence { font-size: 2vw; margin-bottom: 0.5em}
     .name { font-size: 3.5vw; font-weight: bold}
-    img { width: 40%; height: 40%}
-    div.card { flex-basis: 40%; margin: 0px}
+    span.note{ font-size: 1.5vw; color: #aaaaaa; margin: 0em}
+    img { width: 35%; height: 35%}
+    div.card { flex-basis: 45%; margin: 0px}
 }
 
 /* Common items */
