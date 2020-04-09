@@ -4,7 +4,7 @@ The exponential nature of the disease spread overwhelms people's risk perception
 Download the latest data.
 ```
 cd covid_risk_visualier
-PROJECT_HOM=./ ./scripts/download_covid_stats.sh
+PROJECT_HOME=`pwd` ./scripts/download_covid_stats.sh
 ```
 Launch the web service locally.
 ```
