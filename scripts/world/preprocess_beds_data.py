@@ -41,6 +41,11 @@ def preprocess(input, output):
     # Add Taiwan Data from PWC Taiwan
     # (https://www.pwc.tw/en/publications/assets/taiwan-health-industries.pdf)
     beds.loc['Taiwan']= [2016, 57]
+
+    # Add Hong Kong Data from Hong Kong Government.
+    # (https://www.gov.hk/en/about/abouthk/factsheets/docs/public_health.pdf)
+    beds.loc['Hong Kong'] = [2015, 52]
+
     beds.sort_index(inplace=True)
 
     # Convert to the number of beds per 1000 people.

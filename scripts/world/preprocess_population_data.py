@@ -23,6 +23,7 @@ def preprocess(input, output):
     COUNTRY_NAME_VARIATION = {
         "Democratic People's Republic of Korea": 'North Korea',
         "China, Taiwan Province of China": 'Taiwan',
+        "China, Hong Kong SAR": 'Hong Kong',
         "Dem. People's Republic of Korea": 'North Korea',
         'Republic of Korea': 'South Korea',
         'United Kingdom of Great Britain and Northern Ireland': 'United Kingdom',
