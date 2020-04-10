@@ -1,4 +1,4 @@
-import time 
+from datetime import datetime
 import pandas as pd
 import scripts.analysis as analysis
 from flask import Flask, render_template, request
@@ -27,7 +27,7 @@ def common(name, data_path, data_source_html):
 
     html = render_template('index.html', 
         menu_items = menu_items_html,
-        date = time.strftime('%b %d', update_time),
+        date = datetime.strftime(update_time, '%b %d'),
         current_total = '{:,d}'.format(current),
         rate = '{:4.0f}'.format(day_rate),
         change = change_str,

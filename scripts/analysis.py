@@ -31,7 +31,6 @@ def EstimateRate(cases):
 # Analyse data for the given name.
 def Analyse(name, covid_path, population_path, beds_path):
     # Load database.
-    update_time = time.localtime(os.path.getmtime(covid_path))
     cases = pd.read_csv(covid_path)
     populations = pd.read_csv(population_path)
     beds = pd.read_csv(beds_path)
@@ -41,16 +40,15 @@ def Analyse(name, covid_path, population_path, beds_path):
     names = sorted(names)
 
     # Calculate increasing ratio from past 7 days. 
-    dates = cases.date.unique()[-DATA_RANGE:]
     aweek = ExtractAWeek(name, cases)
-    assert(set(aweek.date) == set(dates))
+    assert(len(aweek.date) == DATA_RANGE)
     day_rate = EstimateRate(aweek.total_cases)
     current = aweek.total_cases.iloc[-1]
+    update_time = datetime.strptime(aweek.date.iloc[-1], '%Y-%m-%d')
 
     # Check if the rate is decreasing.
-    dates = cases.date.unique()[-DATA_RANGE-1:-1]
     aweek_to_yesterday = ExtractAWeek(name, cases, 1)
-    assert(set(aweek_to_yesterday.date) == set(dates))
+    assert(len(aweek_to_yesterday.date) == DATA_RANGE)
     day_rate_yesterday = EstimateRate(aweek_to_yesterday.total_cases)
     rate_change = day_rate - day_rate_yesterday
 
