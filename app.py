@@ -5,7 +5,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-MIN_RATE_THRESHOLD = 0.1
+MIN_RATE_THRESHOLD = 0.005
 
 def getRateChangeString(rate_change):
     # Check if the growth rate changed.
