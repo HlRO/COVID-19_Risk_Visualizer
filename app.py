@@ -14,7 +14,7 @@ def getRateChangeString(rate_change):
     else:
         return 'down'
 
-def common(name, data_path, data_source_html):
+def common(name, data_path, data_source_html, locale = ''):
     # Calculate the estimations.
     [menu_items, current, day_rate, rate_change, update_time, time_1_per_500, time_1_per_3, time_everyone, time_no_bed] = analysis.Analyse(name, data_path + 'total_cases.csv', data_path + 'population.csv', data_path + 'beds.csv')
 
@@ -25,7 +25,7 @@ def common(name, data_path, data_source_html):
 
     change_str = getRateChangeString(rate_change)
 
-    html = render_template('index.html', 
+    html = render_template('index' + locale + '.html', 
         menu_items = menu_items_html,
         date = datetime.strftime(update_time, '%b %d'),
         current_total = '{:,d}'.format(current),
@@ -58,6 +58,21 @@ def usa():
     "
 
     return common(name, 'data/usa/', data_source_html);
+
+@app.route('/ja/japan/')
+def ja_japan():
+    name = request.args.get('name')
+    if not name:
+        name = 'Tokyo'
+
+    # Create a list of data sources.
+    data_source_html = "\
+        <p class='appendix sentence'>Number of cases:<br> <a href='https://github.com/kaz-ogiwara/covid19/'>TOYO KEIZAI ONLINE</a></p>\
+        <p class='appendix sentence'>Population:<br> <a href='https://www.stat.go.jp/data/nihon/02.html'>Statistics Bureau Japan</a></p>\
+        <p class='appendix sentence'>Number of hospital beds:<br> <a href='https://www.mhlw.go.jp/toukei/youran/indexyk_2_2.html'>Ministry of Health, Labour and Welfare Japan</a></p>\
+    "
+
+    return common(name, 'data/japan/', data_source_html, '_ja');
 
 @app.route('/japan/')
 def japan():

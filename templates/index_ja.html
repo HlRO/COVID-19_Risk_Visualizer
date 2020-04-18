@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>COVID-19 How many days do we have?</title>
+        <title>COVID-19 あと何日？</title>
         <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
         <script>
             function update_selection(){
@@ -32,17 +32,15 @@
             {{ menu_items | safe }}
         </select>
         <p class='category'>
-        <a href='https://visualization.pythonanywhere.com/world/'>WORLD</a>  / <a href='https://visualization.pythonanywhere.com/usa/'>UNITED STATES</a> / 
-        <a href='https://visualization.pythonanywhere.com/japan/'>JAPAN (English /</a>
-        <a href='https://visualization.pythonanywhere.com/ja/japan/'>日本語)</a>
+        <a href='https://visualization.pythonanywhere.com/world/'>WORLD</a>  / <a href='https://visualization.pythonanywhere.com/usa/'>UNITED STATES</a>
         </p>
         </div>
 
         <p class='name'> {{ name }} </p>
 
-        <p class='stats'>{{ date }}, total <span class='stats_digits'>{{ current_total }}</span>, increasing <span class='{{ change }}'><span class='stats_digits'>{{ rate }}%</span> per day</span></p>
+        <p class='stats'>{{ date }}, 感染者数 <span class='stats_digits'>{{ current_total }}</span>, １日の増加率 <span class='{{ change }}'><span class='stats_digits'>{{ rate }}%</span></span></p>
 
-        <p class='sentence'>If the growth rate stays the same as the last 7 days</p>
+        <p class='sentence'>今日と同じ増加率が今後も続いた場合</p>
 
         <div class='cards'>
             <!-- one in 500 -->
@@ -54,8 +52,8 @@
                     </div>
                     <img src="{{url_for('static', filename='1_per_500.png')}}">
                 </div>
-                <p class='sentence'>One in 500 will be infected<br>
-                <span class='note'>*Including people who get recovered</span></p>
+                <p class='sentence'>近隣の誰かが感染するまで（500人に1人）<br>
+                <span class='note'>*感染後，回復する人数は計算に含まれていません．</span></p>
             </div>
 
             <!-- one in 3 -->
@@ -67,7 +65,7 @@
                     </div>
                     <img src="{{url_for('static', filename='1_per_3.png')}}">
                 </div>
-                <p class='sentence'>One in 3 will be infected</p>
+                <p class='sentence'>家族の誰かが感染するまで（3人に1人）</p>
             </div>
 
             <!-- everyone -->
@@ -79,7 +77,7 @@
                     </div>
                     <img src="{{url_for('static', filename='everyone.png')}}">
                 </div>
-                <p class='sentence'>Everyone will be infected</p>
+                <p class='sentence'>地域全員が感染するまで</p>
             </div>
 
             <!-- hospital beds -->
@@ -91,15 +89,14 @@
                     </div>
                     <img src="{{url_for('static', filename='hospital_bed.png')}}">
                 </div>
-                <p class='sentence'>Total cases will be more than hospital beds<br>
-                <span class='note'>*Far fewer beds are available for COVID-19</span></p>
+                <p class='sentence'>感染者数が病院の全病床数を上回るまで<br>
+                <span class='note'>*全病床数のうちCOVID-19患者用のものはごく一部です</span></p>
             </div>
         </div>
 
         <p class='sentence'>
-        <span class='emphasis red'>You can change this future</span><br>
-        <span class='emphasis'>STAY AT HOME</span><br>
-        <span class='emphasis'>WASH YOUR HANDS</span><br>
+        <span class='emphasis red'>この未来はあなたの努力で変えられます</span><br>
+        <span class='emphasis'>外出を控えて，こまめに手を洗いましょう！</span><br>
         </p>
 
         <hr class='dotted'>
