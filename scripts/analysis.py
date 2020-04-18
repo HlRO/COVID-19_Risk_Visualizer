@@ -41,14 +41,22 @@ def Analyse(name, covid_path, population_path, beds_path):
 
     # Calculate increasing ratio from past 7 days. 
     aweek = ExtractAWeek(name, cases)
-    assert(len(aweek.date) == DATA_RANGE)
+    try:
+        assert(len(aweek.date) == DATA_RANGE)
+    except AssertionError:
+        print('not enough data for:' + name)
+        return None
     day_rate = EstimateRate(aweek.total_cases)
     current = aweek.total_cases.iloc[-1]
     update_time = datetime.strptime(aweek.date.iloc[-1], '%Y-%m-%d')
 
     # Check if the rate is decreasing.
     aweek_to_yesterday = ExtractAWeek(name, cases, 1)
-    assert(len(aweek_to_yesterday.date) == DATA_RANGE)
+    try:
+        assert(len(aweek_to_yesterday.date) == DATA_RANGE)
+    except AssertionError:
+        print('not enough data for:' + name)
+        return None
     day_rate_yesterday = EstimateRate(aweek_to_yesterday.total_cases)
     rate_change = day_rate - day_rate_yesterday
 

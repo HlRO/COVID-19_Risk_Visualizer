@@ -5,25 +5,46 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+MIN_RATE_THRESHOLD = 0.1
+
 def getRateChangeString(rate_change):
     # Check if the growth rate changed.
-    if rate_change > 0.0:
+    if rate_change > MIN_RATE_THRESHOLD:
         return 'up'
-    elif rate_change == 0.0:
-        return 'same'
-    else:
+    elif rate_change < -MIN_RATE_THRESHOLD:
         return 'down'
+    else:
+        return 'same'
 
 def common(name, data_path, data_source_html, locale = ''):
     # Calculate the estimations.
-    [menu_items, current, day_rate, rate_change, update_time, time_1_per_500, time_1_per_3, time_everyone, time_no_bed] = analysis.Analyse(name, data_path + 'total_cases.csv', data_path + 'population.csv', data_path + 'beds.csv')
+    analysis_result = analysis.Analyse(name, data_path + 'total_cases.csv', data_path + 'population.csv', data_path + 'beds.csv')
+    if analysis_result is None:
+        html = render_template('no_data.html',
+                name = name,
+                data_source = data_source_html,
+                ) 
+        return html
+    else:
+        [menu_items, current, day_rate, rate_change, update_time, time_1_per_500, time_1_per_3, time_everyone, time_no_bed] = analysis_result
 
-    # Create a list of countries.
+    # Create a list of areas.
     menu_items_html = ''
     for item in menu_items:
         menu_items_html += '<option value="' + str(item)+ '">' + str(item)+ '</option>¥n'
 
+    # Convert stats numbers to strings.
     change_str = getRateChangeString(rate_change)
+    if day_rate < MIN_RATE_THRESHOLD:
+        time_1_per_500_str = '∞'
+        time_1_per_3_str = '∞'
+        time_everyone_str = '∞'
+        time_no_bed_str = '∞'
+    else:
+        time_1_per_500_str = '{:3.0f}'.format(time_1_per_500) 
+        time_1_per_3_str = '{:3.0f}'.format(time_1_per_3)
+        time_everyone_str = '{:3.0f}'.format(time_everyone)
+        time_no_bed_str = '{:3.0f}'.format(time_no_bed)
 
     html = render_template('index' + locale + '.html', 
         menu_items = menu_items_html,
@@ -32,10 +53,10 @@ def common(name, data_path, data_source_html, locale = ''):
         rate = '{:4.0f}'.format(day_rate),
         change = change_str,
         name = name,
-        time_1_per_500 = '{:3.0f}'.format(time_1_per_500), 
-        time_1_per_3 = '{:3.0f}'.format(time_1_per_3), 
-        time_everyone = '{:3.0f}'.format(time_everyone), 
-        time_no_bed = '{:3.0f}'.format(time_no_bed),
+        time_1_per_500 = time_1_per_500_str,
+        time_1_per_3 = time_1_per_3_str,
+        time_everyone = time_everyone_str,
+        time_no_bed = time_no_bed_str,
         data_source = data_source_html,
         )
     return html

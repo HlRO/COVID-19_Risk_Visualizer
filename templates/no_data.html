@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>COVID-19 How many days do we have?</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+        <script>
+            function update_selection(){
+              console.debug('called')
+              pulldown_option = document.getElementById('name').getElementsByTagName('option');
+              for(i=0; i<pulldown_option.length;i++){
+                if(pulldown_option[i].value != "{{ name }}"){
+                  continue;
+                }
+                pulldown_option[i].selected = true;
+                console.debug('found')
+                break;
+              }
+              document.getElementById('name').focus();
+            }
+
+            function reload(){
+                var name = document.getElementById('name').value;
+                window.location = "?name=" + name;
+            }
+        </script
+    </head>
+    <body onload="update_selection()">
+
+        <div class='menu'>
+        <p class='category'>
+        <a href='https://visualization.pythonanywhere.com/world/'>WORLD</a>  / <a href='https://visualization.pythonanywhere.com/usa/'>UNITED STATES</a> / 
+        <a href='https://visualization.pythonanywhere.com/japan/'>JAPAN (English /</a>
+        <a href='https://visualization.pythonanywhere.com/ja/japan/'>日本語)</a>
+        </p>
+        </div>
+
+        <p class='name'> {{ name }} </p>
+
+        <p class='sentence'>We don't have enough data for this area.</p>
+        <p class='sentence'><span class='emphasis'>STAY SAFE!</span></p>
+
+        <p class='sentence'>
+        <a href="javascript:history.back()">Go Back</a>
+        </p>
+
+        <hr class='dotted'>
+
+        <div>
+            <p class='appendix title'>Data source</p>
+            {{ data_source | safe }}
+            <p class='appendix title'>How it's calculated</p>
+            <p class='appendix sentence'>Precise estimation is not my goal,<br>I want to change the predicted future instead.</p>
+            <p class='appendix sentence'>Simple extrapolation is used for the estimations.</p>
+            <p class='appendix sentence'>1) Extract the number of cases for the last 7 days.</p>
+            <p class='appendix sentence'>2) Calculate the growth ratio by applying a linear regression in log space.</p>
+            <p class='appendix sentence'>3) Extrapolate the numbers using the rate.</p>
+            <p class='appendix sentence'>Recovery population is not taken into account.</p>
+            <p class='appendix sentence'>The number of hospital beds is NOT a live update.</p>
+        </div>
+    </body>
+</html>
