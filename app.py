@@ -114,7 +114,7 @@ def japan():
 def world():
     name = request.args.get('name')
     if not name:
-        name = 'Japan'
+        name = 'United States of America'
 
     # Create a list of data sources.
     data_source_html = "\
