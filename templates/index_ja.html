@@ -32,7 +32,8 @@
             {{ menu_items | safe }}
         </select>
         <p class='category'>
-        <a href='https://visualization.pythonanywhere.com/world/'>WORLD</a>  / <a href='https://visualization.pythonanywhere.com/usa/'>UNITED STATES</a>
+        <a href='https://visualization.pythonanywhere.com/world/'>WORLD</a> / <a href='https://visualization.pythonanywhere.com/usa/'>UNITED STATES</a> / 
+        <a href='https://visualization.pythonanywhere.com/japan/'>JAPAN (English)</a>
         </p>
         </div>
 
@@ -43,6 +44,8 @@
         <p class='sentence'>今日と同じ増加率が今後も続いた場合</p>
 
         <div class='cards'>
+            <div class='spacer'></div>
+
             <!-- one in 500 -->
             <div class='card'>
                 <div class='visual_info'>
@@ -53,7 +56,7 @@
                     <img src="{{url_for('static', filename='1_per_500.png')}}">
                 </div>
                 <p class='sentence'>近隣の誰かが感染するまで（500人に1人）<br>
-                <span class='note'>*感染後，回復する人数は計算に含まれていません．</span></p>
+                <span class='note'>*感染後 回復する人数は計算に含まれていません．</span></p>
             </div>
 
             <!-- one in 3 -->
@@ -67,6 +70,10 @@
                 </div>
                 <p class='sentence'>家族の誰かが感染するまで（3人に1人）</p>
             </div>
+
+            <div class='spacer'></div>
+
+            <div class='spacer'></div>
 
             <!-- everyone -->
             <div class='card'>
@@ -90,13 +97,16 @@
                     <img src="{{url_for('static', filename='hospital_bed.png')}}">
                 </div>
                 <p class='sentence'>感染者数が病院の全病床数を上回るまで<br>
-                <span class='note'>*全病床数のうちCOVID-19患者用のものはごく一部です</span></p>
+                <span class='note'>*全病床のうちCOVID-19患者用のものはごく一部です</span></p>
             </div>
+
+            <div class='spacer'></div>
         </div>
 
         <p class='sentence'>
-        <span class='emphasis red'>この未来はあなたの努力で変えられます</span><br>
-        <span class='emphasis'>外出を控えて，こまめに手を洗いましょう！</span><br>
+        <span class='emphasis red'>この未来は変えられる</span><br>
+        <span class='emphasis'>外出を控え</span><br>
+        <span class='emphasis'>こまめに手を洗おう</span><br>
         </p>
 
         <hr class='dotted'>
