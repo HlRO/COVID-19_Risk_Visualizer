@@ -2,33 +2,17 @@
 @media screen and (orientation: portrait) {
     p { font-family: Arial, Helvetica; text-align: center; color: #434343; margin: 0.2em}
     .appendix.title { font-size: 4vw; font-weight: bold; margin: 1em 0.2em auto}
-    .appendix.sentence { font-size: 3vw; margin: 0.8em}
-    .emphasis.red { font-size: 7vw; color: red; font-weight: bold}
-    .emphasis { font-size: 7vw; font-weight: bold}
-    .category { font-size: 3vw}
-    .stats { font-size: 3vw}
-    .days { font-size: 7vw; margin: 0px}
-    .digits { font-size: 12vw; font-weight: bold; margin: 0px; line-height: 90%}
-    .sentence { font-size: 4vw; margin-bottom: 0.5em}
-    .name { font-size: 7vw; font-weight: bold}
-    span.note{ font-size: 3vw; color: #aaaaaa; margin: 0em}
-    img { width: 30%; height: 30%}
-    div.card { flex-basis: 100%; margin: 0px}
-}
-@media screen and (orientation: landscape) {
-    p { font-family: Arial, Helvetica; text-align: center; color: #434343; margin: 0.2em}
-    .appendix.title { font-size: 4vw; font-weight: bold; margin: 1em 0.2em auto}
     .appendix.sentence { font-size: 3.5vw; margin: 0.8em}
     .emphasis { font-size: 5vw; font-weight: bold}
     .emphasis.red { color: red}
     .stats { font-size: 2.8vw}
-    .note { font-size: 2.8vw; color: #aaaaaa; margin: 0em}
+    .note { font-size: 3vw; color: #aaaaaa; margin: 0em}
     .sentence { font-size: 3.5vw; margin-bottom: 0.5em}
-    .name { font-size: 7vw; font-weight: bold}
+    .name { font-size: 5vw; font-weight: bold}
     .days { font-size: 7vw; margin: 0px}
     .digits { font-size: 10.5vw; font-weight: bold; margin: 0px; line-height: 90%}
-    img { width: 35%; height: 35%}
-    div.card { width: 50%; margin: 0px}
+    img { width: 30%; height: 30%}
+    div.card { width: 100%; margin: 0px}
     div.spacer { width: 0%; margin: 0px}
 }
 
