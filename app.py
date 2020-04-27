@@ -18,7 +18,7 @@ def getRateChangeString(rate_change):
 
 def common(name, data_path, data_source_html, locale = ''):
     # Calculate the estimations.
-    analysis_result = analysis.Analyse(name, data_path + 'total_cases.csv', data_path + 'population.csv', data_path + 'beds.csv')
+    analysis_result = analysis.Analyze(name, data_path + 'total_cases.csv', data_path + 'population.csv', data_path + 'beds.csv')
     if analysis_result is None:
         html = render_template('no_data.html',
                 name = name,

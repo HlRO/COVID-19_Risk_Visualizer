@@ -28,8 +28,8 @@ def EstimateRate(cases):
     rate = np.exp(linear_regressor.coef_[0,0])
     return rate
 
-# Analyse data for the given name.
-def Analyse(name, covid_path, population_path, beds_path):
+# Analyze data for the given name.
+def Analyze(name, covid_path, population_path, beds_path):
     # Load database.
     cases = pd.read_csv(covid_path)
     populations = pd.read_csv(population_path)
