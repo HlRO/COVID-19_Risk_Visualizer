@@ -26,7 +26,7 @@ def common(name, data_path, data_source_html, locale = ''):
                 ) 
         return html
     else:
-        [menu_items, current, day_rate, rate_change, update_time, time_1_per_500, time_1_per_3, time_everyone, time_no_bed] = analysis_result
+        [dates, cases, menu_items, current, day_rate, rate_change, update_time, time_1_per_500, time_1_per_3, time_everyone, time_no_bed] = analysis_result
 
     # Create a list of areas.
     menu_items_html = ''
@@ -46,6 +46,9 @@ def common(name, data_path, data_source_html, locale = ''):
         time_everyone_str = '{:3.0f}'.format(time_everyone)
         time_no_bed_str = '{:3.0f}'.format(time_no_bed)
 
+    dates_str = ','.join(["'{}'".format(date) for date in dates.values])
+    cases_str = ','.join([str(case) for case in cases.values])
+
     html = render_template('index' + locale + '.html', 
         menu_items = menu_items_html,
         date = datetime.strftime(update_time, '%b %d'),
@@ -58,6 +61,8 @@ def common(name, data_path, data_source_html, locale = ''):
         time_everyone = time_everyone_str,
         time_no_bed = time_no_bed_str,
         data_source = data_source_html,
+        dates = dates_str,
+        cases = cases_str,
         )
     return html
 

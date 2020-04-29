@@ -24,6 +24,7 @@
                 window.location = "?name=" + name;
             }
         </script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     </head>
     <body onload="update_selection()">
 
@@ -109,6 +110,26 @@
         <span class='emphasis'>STAY AT HOME</span><br>
         <span class='emphasis'>WASH YOUR HANDS</span><br>
         </p>
+
+        <div id='stage'></div>
+        <script>
+          var data = [{
+            x: [{{ dates | safe}}],
+            y: [{{ cases }}],
+            type: 'line',
+            line: {
+              color: 'rgb(255, 0, 0)',
+              width: 2
+            }
+          }];
+          var options = {
+            yaxis: {
+              title: 'Total cases',
+              type: 'log',
+            }
+          }
+          Plotly.plot('stage', data, options);
+        </script>
 
         <hr class='dotted'>
 
