@@ -14,6 +14,7 @@
     img { width: 30%; height: 30%}
     div.card { width: 100%; margin: 0px}
     div.spacer { width: 0%; margin: 0px}
+    #stage { width: 50%; margin: 0px}
 }
 
 /* Landscape */
@@ -32,6 +33,7 @@
     img { width: 35%; height: 35%}
     div.card { width: 33%; margin: 0px}
     div.spacer { width: 17%; margin: 0px}
+    #stage { width: 50%; margin: 0px}
 }
 
 /* Common items */

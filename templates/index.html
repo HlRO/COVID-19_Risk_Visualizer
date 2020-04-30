@@ -111,7 +111,9 @@
         <span class='emphasis'>WASH YOUR HANDS</span><br>
         </p>
 
-        <div id='stage'></div>
+        <div class='cards'>
+          <div id='stage'></div>
+        </div>
         <script>
           var data = [{
             x: [{{ dates | safe}}],
@@ -126,7 +128,14 @@
             yaxis: {
               title: 'Total cases',
               type: 'log',
-            }
+              autorange: true,
+            },
+            margin: {
+              l: 60,
+              r: 0,
+              b: 30,
+              t: 0,
+            },
           }
           Plotly.plot('stage', data, options);
         </script>
