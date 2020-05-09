@@ -4,6 +4,7 @@ from datetime import datetime
 from datetime import date
 import pandas as pd
 import os
+import re
 
 # Preprocess the data from Toyo Kezai Online 
 # (https://github.com/kaz-ogiwara/covid19/)
@@ -16,6 +17,8 @@ def preprocess(input, output):
     cases = data
     cases.columns = ['year','month','day', 'name', 'total_cases', 'hospitalized', 'recovered', 'dead']
     cases['date'] = [date(year,month,day) for year,month,day in zip(cases['year'], cases['month'], cases['day'])]
+    # Some entry have '"' around the case number. Clean these up to make sure the data is treated as integer not string. 
+    cases['total_cases'] = [int(re.sub('[^\d]+','',item)) for item in cases['total_cases']]
     cases.sort_values(by='date',inplace=True)
 
     # Extract only columns needed.
