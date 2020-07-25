@@ -15,10 +15,11 @@ def preprocess(input, output):
 
     # Reformat name and date columns.
     cases = data
-    cases.columns = ['year','month','day', 'name', 'total_cases', 'hospitalized', 'recovered', 'dead']
-    cases['date'] = [date(year,month,day) for year,month,day in zip(cases['year'], cases['month'], cases['day'])]
+    cases.columns = ['year','month','date', 'prefectureNameJ', 'prefectureNameE', 'testedPositive', 'peopleTested', 'discharged', 'deaths']
+    cases['date'] = [date(year,month,day) for year,month,day in zip(cases['year'], cases['month'], cases['date'])]
     # Some entry have '"' around the case number. Clean these up to make sure the data is treated as integer not string. 
-    cases['total_cases'] = [int(re.sub('[^\d]+','',item)) for item in cases['total_cases']]
+    # cases['new_cases'] = [int(re.sub('[^\d]+','',item)) for item in cases['testedPositive']]
+    cases.rename(columns={'prefectureNameJ':'name', 'testedPositive':'total_cases'}, inplace=True)
     cases.sort_values(by='date',inplace=True)
 
     # Extract only columns needed.
