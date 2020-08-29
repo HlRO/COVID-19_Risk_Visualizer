@@ -15,7 +15,7 @@ def preprocess(input, output):
 
     # Reformat name and date columns.
     cases = data
-    cases.columns = ['year','month','date', 'prefectureNameJ', 'prefectureNameE', 'testedPositive', 'peopleTested', 'discharged', 'deaths']
+    cases.columns = ['year','month','date', 'prefectureNameJ', 'prefectureNameE', 'testedPositive', 'peopleTested', 'hospitalized', 'serious', 'discharged', 'deaths', 'effectiveReproductionNumber']
     cases['date'] = [date(year,month,day) for year,month,day in zip(cases['year'], cases['month'], cases['date'])]
     # Some entry have '"' around the case number. Clean these up to make sure the data is treated as integer not string. 
     # cases['new_cases'] = [int(re.sub('[^\d]+','',item)) for item in cases['testedPositive']]
