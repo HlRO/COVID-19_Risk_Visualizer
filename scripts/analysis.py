@@ -69,8 +69,9 @@ def Analyze(name, covid_path, population_path, beds_path):
 
     # Estimate days of milestones.
     time_1_per_500 = max(0.0, np.log(population / 500 / current) / np.log(day_rate))
+    time_1_per_10 = max(0.0, np.log(population / 10 / current) / np.log(day_rate))
     time_1_per_3 = max(0.0, np.log(population / 3 / current) / np.log(day_rate))
     time_everyone = max(0.0, np.log(population / 1 / current) / np.log(day_rate))
     time_no_bed = max(0.0, np.log(beds / current) / np.log(day_rate))
 
-    return [aweek.date, aweek.total_cases, names, current, (day_rate - 1.0) * 100, rate_change, update_time, time_1_per_500, time_1_per_3, time_everyone, time_no_bed]
+    return [aweek.date, aweek.total_cases, names, current, (day_rate - 1.0) * 100, rate_change, update_time, time_1_per_500, time_1_per_10, time_1_per_3, time_everyone, time_no_bed]

@@ -26,7 +26,7 @@ def common(name, data_path, data_source_html, locale = ''):
                 ) 
         return html
     else:
-        [dates, cases, menu_items, current, day_rate, rate_change, update_time, time_1_per_500, time_1_per_3, time_everyone, time_no_bed] = analysis_result
+        [dates, cases, menu_items, current, day_rate, rate_change, update_time, time_1_per_500, time_1_per_10, time_1_per_3, time_everyone, time_no_bed] = analysis_result
 
     # Create a list of areas.
     menu_items_html = ''
@@ -37,11 +37,13 @@ def common(name, data_path, data_source_html, locale = ''):
     change_str = getRateChangeString(rate_change)
     if day_rate < MIN_RATE_THRESHOLD:
         time_1_per_500_str = '∞'
+        time_1_per_10_str = '∞'
         time_1_per_3_str = '∞'
         time_everyone_str = '∞'
         time_no_bed_str = '∞'
     else:
         time_1_per_500_str = '{:3.0f}'.format(time_1_per_500) 
+        time_1_per_10_str = '{:3.0f}'.format(time_1_per_10) 
         time_1_per_3_str = '{:3.0f}'.format(time_1_per_3)
         time_everyone_str = '{:3.0f}'.format(time_everyone)
         time_no_bed_str = '{:3.0f}'.format(time_no_bed)
@@ -57,6 +59,7 @@ def common(name, data_path, data_source_html, locale = ''):
         change = change_str,
         name = name,
         time_1_per_500 = time_1_per_500_str,
+        time_1_per_10 = time_1_per_10_str,
         time_1_per_3 = time_1_per_3_str,
         time_everyone = time_everyone_str,
         time_no_bed = time_no_bed_str,

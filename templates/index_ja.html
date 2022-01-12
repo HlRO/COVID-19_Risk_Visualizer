@@ -57,8 +57,24 @@
                     <img src="{{url_for('static', filename='1_per_500.png')}}">
                 </div>
                 <p class='sentence'>近隣の誰かが感染するまで（500人に1人）<br>
-                <span class='note'>*感染後 回復する人数は計算に含まれていません</span></p>
+                <span class='note'>*感染後 回復する人数は考慮されていません</span></p>
             </div>
+
+            <!-- one in 10 -->
+            <div class='card'>
+                <div class='visual_info'>
+                    <div class='days'>
+                        <p class='digits'>{{ time_1_per_10}}</p>
+                        <p class='days'>days</p>
+                    </div>
+                    <img src="{{url_for('static', filename='1_per_10.png')}}">
+                </div>
+                <p class='sentence'>お隣さんの誰かが感染するまで（10人に1人）<br>
+            </div>
+
+            <div class='spacer'></div>
+
+            <div class='spacer'></div>
 
             <!-- one in 3 -->
             <div class='card'>
@@ -72,10 +88,6 @@
                 <p class='sentence'>家族の誰かが感染するまで（3人に1人）</p>
             </div>
 
-            <div class='spacer'></div>
-
-            <div class='spacer'></div>
-
             <!-- everyone -->
             <div class='card'>
                 <div class='visual_info'>
@@ -88,56 +100,14 @@
                 <p class='sentence'>地域全員が感染するまで</p>
             </div>
 
-            <!-- hospital beds -->
-            <div class='card'>
-                <div class='visual_info'>
-                    <div class='days'>
-                        <p class='digits'>{{ time_no_bed}}</p>
-                        <p class='days'>days</p>
-                    </div>
-                    <img src="{{url_for('static', filename='hospital_bed.png')}}">
-                </div>
-                <p class='sentence'>感染者数が病院の全病床数を上回るまで<br>
-                <span class='note'>*全病床のうちCOVID-19患者用のものはごく一部です</span></p>
-            </div>
-
             <div class='spacer'></div>
         </div>
 
         <p class='sentence'>
         <span class='emphasis red'>この未来は変えられる</span><br>
-        <span class='emphasis'>外出を控え</span><br>
+        <span class='emphasis'>マスクをして</span><br>
         <span class='emphasis'>こまめに手を洗おう</span><br>
         </p>
-
-        <div class='cards'>
-          <div id='stage'></div>
-        </div>
-        <script>
-          var data = [{
-            x: [{{ dates | safe}}],
-            y: [{{ cases }}],
-            type: 'line',
-            line: {
-              color: 'rgb(255, 0, 0)',
-              width: 2
-            }
-          }];
-          var options = {
-            yaxis: {
-              title: 'Total cases',
-              type: 'log',
-              autorange: true,
-            },
-            margin: {
-              l: 60,
-              r: 0,
-              b: 30,
-              t: 0,
-            },
-          }
-          Plotly.plot('stage', data, options);
-        </script>
 
         <hr class='dotted'>
 

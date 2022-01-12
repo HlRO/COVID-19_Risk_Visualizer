@@ -61,6 +61,22 @@
                 <span class='note'>*Including people who get recovered</span></p>
             </div>
 
+            <!-- one in 10 -->
+            <div class='card'>
+                <div class='visual_info'>
+                    <div class='days'>
+                        <p class='digits'>{{ time_1_per_10}}</p>
+                        <p class='days'>days</p>
+                    </div>
+                    <img src="{{url_for('static', filename='1_per_10.png')}}">
+                </div>
+                <p class='sentence'>Your next door will be infected (1 in 10)<br>
+            </div>
+
+            <div class='spacer'></div>
+
+            <div class='spacer'></div>
+
             <!-- one in 3 -->
             <div class='card'>
                 <div class='visual_info'>
@@ -72,10 +88,6 @@
                 </div>
                 <p class='sentence'>Your family member will be infected (1 in 3)<br>
             </div>
-
-            <div class='spacer'></div>
-            
-            <div class='spacer'></div>
 
             <!-- everyone -->
             <div class='card'>
@@ -89,56 +101,14 @@
                 <p class='sentence'>Everyone will be infected</p>
             </div>
 
-            <!-- hospital beds -->
-            <div class='card'>
-                <div class='visual_info'>
-                    <div class='days'>
-                        <p class='digits'>{{ time_no_bed}}</p>
-                        <p class='days'>days</p>
-                    </div>
-                    <img src="{{url_for('static', filename='hospital_bed.png')}}">
-                </div>
-                <p class='sentence'>Total cases will be more than hospital beds<br>
-                <span class='note'>*Far fewer beds are available for COVID-19</span></p>
-            </div>
-
             <div class='spacer'></div>
         </div>
 
         <p class='sentence'>
         <span class='emphasis red'>You can change this future</span><br>
-        <span class='emphasis'>STAY AT HOME</span><br>
+        <span class='emphasis'>WEAR A MASK</span><br>
         <span class='emphasis'>WASH YOUR HANDS</span><br>
         </p>
-
-        <div class='cards'>
-          <div id='stage'></div>
-        </div>
-        <script>
-          var data = [{
-            x: [{{ dates | safe}}],
-            y: [{{ cases }}],
-            type: 'line',
-            line: {
-              color: 'rgb(255, 0, 0)',
-              width: 2
-            }
-          }];
-          var options = {
-            yaxis: {
-              title: 'Total cases',
-              type: 'log',
-              autorange: true,
-            },
-            margin: {
-              l: 60,
-              r: 0,
-              b: 30,
-              t: 0,
-            },
-          }
-          Plotly.plot('stage', data, options);
-        </script>
 
         <hr class='dotted'>
 
